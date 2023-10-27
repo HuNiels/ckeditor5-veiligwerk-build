@@ -14,6 +14,7 @@
     "@ckeditor/ckeditor5-dev-utils": "^30.3.5",
     "@ckeditor/ckeditor5-dev-webpack-plugin": "^30.3.5",
     "@ckeditor/ckeditor5-editor-classic": "^35.0.1",
+    "@ckeditor/ckeditor5-editor-inline": "^40.0.0",
     "@ckeditor/ckeditor5-essentials": "^35.0.1",
     "@ckeditor/ckeditor5-font": "^35.0.1",
     "@ckeditor/ckeditor5-heading": "^35.0.1",
