@@ -2,7 +2,8 @@
  * @license Copyright (c) 2014-2022, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
+import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
+import { InlineEditor as InlineEditorBase } from '@ckeditor/ckeditor5-editor-inline';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
@@ -36,10 +37,11 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 
-class Editor extends ClassicEditor {}
+class ClassicEditor extends ClassicEditorBase {}
+class InlineEditor extends InlineEditorBase {}
 
 // Plugins to include in the build.
-Editor.builtinPlugins = [
+const plugins = [
 	Alignment,
 	Autoformat,
 	BlockQuote,
@@ -75,7 +77,7 @@ Editor.builtinPlugins = [
 ];
 
 // Editor configuration.
-Editor.defaultConfig = {
+const config = {
 	toolbar: {
 		items: [
 			'heading',
@@ -124,4 +126,11 @@ Editor.defaultConfig = {
 	}
 };
 
-export default Editor;
+ClassicEditor.builtinPlugins = plugins;
+InlineEditor.builtinPlugins = plugins;
+ClassicEditor.defaultConfig = config;
+InlineEditor.defaultConfig = config;
+
+export default {
+    ClassicEditor, InlineEditor
+};
